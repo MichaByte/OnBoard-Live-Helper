@@ -12,7 +12,7 @@ export function deny(app: Slack.App) {
 
     const adminUserId = body.user.id;
     // @ts-expect-error
-    const nestUserId = body.actions[0].value;
+    const userSlackId = body.actions[0].value;
 
     const msgBlocks = body.message!.blocks;
 
@@ -32,13 +32,13 @@ export function deny(app: Slack.App) {
     });
 
     await client.chat.postMessage({
-      channel: nestUserId,
-      text: `Your request for Nest has been denied. Please DM <@${adminUserId}> for more information.`,
+      channel: userSlackId,
+      text: `Your request to join OnBoard Live has been denied. Please DM <@${adminUserId}> for more information.`,
     });
 
     await prisma.users.delete({
       where: {
-        slack_user_id: nestUserId,
+        slack_user_id: userSlackId,
       },
     });
   });

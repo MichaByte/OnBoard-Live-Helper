@@ -1,8 +1,6 @@
 export default function approved_home(
   name: string,
-  username: string,
   email: string,
-  ssh_key: string
 ) {
   return {
     type: "home" as const,
@@ -11,25 +9,18 @@ export default function approved_home(
         type: "header",
         text: {
           type: "plain_text",
-          text: "Nest Bot",
+          text: "OnBoard Live Helper",
         },
       },
       {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: "Welcome to Nest! Here's your profile - if you have any questions, ask in the #nest channel!",
+          text: "Welcome to OnBoard Live! Here's your info - if you have any questions, ask in the #onboard-live channel!",
         },
       },
       {
         type: "divider",
-      },
-      {
-        type: "section",
-        text: {
-          type: "mrkdwn",
-          text: `*Nest Username:* ${username}`,
-        },
       },
       {
         type: "divider",
@@ -69,16 +60,6 @@ export default function approved_home(
           },
           value: "edit_email",
           action_id: "edit_email",
-        },
-      },
-      {
-        type: "divider",
-      },
-      {
-        type: "section",
-        text: {
-          type: "mrkdwn",
-          text: `*SSH Public Key:* \`${ssh_key}\``,
         },
       },
       {

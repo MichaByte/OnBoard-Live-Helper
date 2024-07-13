@@ -4,7 +4,7 @@ export default function full_name_input() {
     callback_id: "edit_full_name",
     title: {
       type: "plain_text" as const,
-      text: "Nest Bot",
+      text: "OnBoard Live Helper",
       emoji: true,
     },
     blocks: [

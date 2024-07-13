@@ -20,9 +20,7 @@ export function edit_full_name(app: Slack.App) {
       user_id: body.user.id,
       view: approved_home(
         user.name!,
-        user.tilde_username,
         user.email!,
-        user.ssh_public_key
       ),
     });
   });

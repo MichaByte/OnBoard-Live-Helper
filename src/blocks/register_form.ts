@@ -14,7 +14,7 @@ export default function register_form(profile_name: string) {
     },
     title: {
       type: "plain_text" as const,
-      text: "Register for Nest",
+      text: "Register for OnBoard Live",
       emoji: true,
     },
     blocks: [
@@ -22,25 +22,12 @@ export default function register_form(profile_name: string) {
         type: "section",
         text: {
           type: "plain_text",
-          text: `:wave: Hey ${profile_name}!\n\nPlease enter the required details to register for Nest!`,
+          text: `:wave: Hey ${profile_name}!\n\nPlease enter the required details to register for OnBoard Live!`,
           emoji: true,
         },
       },
       {
         type: "divider",
-      },
-      {
-        type: "input",
-        block_id: "username",
-        label: {
-          type: "plain_text",
-          text: "Nest username? (This will be your subdomain)",
-          emoji: true,
-        },
-        element: {
-          type: "plain_text_input",
-          action_id: "username_input",
-        },
       },
       {
         type: "input",
@@ -87,7 +74,7 @@ export default function register_form(profile_name: string) {
         block_id: "description",
         label: {
           type: "plain_text",
-          text: "What do you plan to use Nest for?",
+          text: "What do you plan to make with OnBoard Live?",
           emoji: true,
         },
         element: {

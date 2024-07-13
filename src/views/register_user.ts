@@ -1,7 +1,6 @@
 import Slack from "@slack/bolt";
 
 import { prisma } from "../util/prisma.js";
-import reserved_usernames from "../reserved_usernames.json" with { type: "json" };
 import unapproved_home from "../blocks/unapproved_home.js";
 import approval_message from "../blocks/approval_message.js";
 
@@ -36,25 +35,6 @@ export function register_user(app: Slack.App) {
       ack({
         errors: {
           username: "Invalid username - must be a valid DNS label",
-        },
-        response_action: "errors",
-      });
-      return;
-    }
-
-    const takenUsers = await prisma.users.findFirst({
-      where: {
-        tilde_username: username,
-      },
-      select: {
-        id: true,
-      },
-    });
-
-    if (takenUsers != null || reserved_usernames.includes(username)) {
-      ack({
-        errors: {
-          username: "Username already taken",
         },
         response_action: "errors",
       });
@@ -96,12 +76,11 @@ export function register_user(app: Slack.App) {
         email,
         ssh_public_key: ssh_key,
         description,
-        tilde_username: username,
       },
     });
 
     await client.chat.postMessage({
-      channel: "C05VBD1B7V4", // private #nest-registration channel id
+      channel: "C05VBD1B7V4",
       blocks: approval_message(
         body.user.id,
         name,
@@ -110,12 +89,12 @@ export function register_user(app: Slack.App) {
         ssh_key,
         description
       ),
-      text: `<@${body.user.id}> is requesting an approval for Nest`,
+      text: `<@${body.user.id}> is requesting an approval for OnBoard Live`,
     });
 
     await client.views.publish({
       user_id: body.user.id,
-      view: unapproved_home(name, username, email, ssh_key),
+      view: unapproved_home(name, email),
     });
 
     await client.chat.postMessage({

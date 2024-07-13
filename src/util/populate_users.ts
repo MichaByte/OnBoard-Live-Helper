@@ -18,7 +18,6 @@ export default async function populate_users() {
   const users = (await usersRes.json()).results;
   const filteredUsers = users.filter(
     (user: any) =>
-      user.groups.includes("c844feff-89b0-45cb-8204-8fc47afbd348") && // nest-users group
       user.is_active &&
       user.type === "internal" &&
       !user.groups.includes("2c756b31-2afa-4fbd-b011-b951529210d5") // test-account group
@@ -32,7 +31,6 @@ export default async function populate_users() {
         slack_user_id: i.toString(),
         name: user.name,
         email: user.email,
-        tilde_username: user.username,
         ssh_public_key: user.attributes?.sshPublicKey ?? "None provided",
         description: "Added by populate_users function",
         is_approved: true,

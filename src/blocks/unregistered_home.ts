@@ -6,14 +6,14 @@ export default function unregistered_home() {
         type: "header",
         text: {
           type: "plain_text",
-          text: "Nest Bot",
+          text: "OnBoard Live Helper",
         },
       },
       {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: "Hey there, I'm Nest Bot! I'll be helping you get started with Nest. Just provide your details and I'll help get you started!",
+          text: "Hey there, I'm the OnBoard Live helper! I'll be helping you get started with OnBoard Live. Just provide your details and I'll help get you started!",
         },
       },
       {

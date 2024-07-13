@@ -1,8 +1,6 @@
 export default function unapproved_home(
   name: string,
-  username: string,
   email: string,
-  ssh_key: string
 ) {
   return {
     type: "home" as const,
@@ -11,25 +9,18 @@ export default function unapproved_home(
         type: "header",
         text: {
           type: "plain_text",
-          text: "Nest Bot",
+          text: "OnBoard Live Helper",
         },
       },
       {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: "Your Nest account is pending approval! Here's your profile:",
+          text: "Your OnBoard Live account is pending approval! Here's your profile:",
         },
       },
       {
         type: "divider",
-      },
-      {
-        type: "section",
-        text: {
-          type: "mrkdwn",
-          text: `*Nest Username:* ${username}`,
-        },
       },
       {
         type: "divider",
@@ -49,16 +40,6 @@ export default function unapproved_home(
         text: {
           type: "mrkdwn",
           text: `*Email:* ${email}`,
-        },
-      },
-      {
-        type: "divider",
-      },
-      {
-        type: "section",
-        text: {
-          type: "mrkdwn",
-          text: `*SSH Public Key:* \`${ssh_key}\``,
         },
       },
     ],

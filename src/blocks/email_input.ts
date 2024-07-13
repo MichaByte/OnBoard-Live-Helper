@@ -4,7 +4,7 @@ export default function email_input() {
     callback_id: "edit_email",
     title: {
       type: "plain_text" as const,
-      text: "Nest Bot",
+      text: "OnBoard Live Helper",
       emoji: true,
     },
     blocks: [
